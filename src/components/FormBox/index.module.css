@@ -1,0 +1,34 @@
+.form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.box{
+    border: 2px solid rgb(231, 231, 231);
+    width: 500px;
+    height: 500px;
+    margin: 100px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.select{
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+}
+.button{
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    margin: 100px;
+}
+.formGroup{
+    padding: 10px;
+    width: 300px;
+}
+.field{
+    border: 1px groove #ddd 
+}
