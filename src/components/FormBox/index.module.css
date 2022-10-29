@@ -17,7 +17,7 @@
 .select{
     padding: 20px;
     margin: 10px;
-    width: 300px;
+    width: 400px;
 }
 .button{
     display: flex;
@@ -27,7 +27,7 @@
 }
 .formGroup{
     padding: 10px;
-    width: 300px;
+    width: 400px;
 }
 .field{
     border: 1px groove #ddd 
