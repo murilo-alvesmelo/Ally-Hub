@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
 import Form from 'react-bootstrap/Form'
 import Select from 'react-select';
 
@@ -83,12 +82,13 @@ export default function FormBox(){
     const handleSubmit = (e) =>{
         e.preventDefault()
         setForm({name, email, telefone, cpf, country: selectCountry, city: selectCity})
+        console.log(form)
         window.location.reload()
     }
 
     
     return(
-        <div>
+        <div className={styles.container}>
         <Form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.box}>
                 <p>Dados Pessoais</p>
@@ -144,8 +144,8 @@ export default function FormBox(){
                 </div>
             </div>
 
-            <div className={styles.button}>
-                <Button type="submit" variant="primary">Primary</Button>
+            <div className={styles.te}>
+                <button type="submit" className={styles.btn}>Primary</button>
             </div>
         </Form>
     </div>
