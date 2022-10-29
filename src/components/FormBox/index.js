@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Form from 'react-bootstrap/Form'
 import Select from 'react-select';
-
+import * as yup from 'yup';
 
 
 import styles from './index.module.css'
@@ -12,10 +12,7 @@ export default function FormBox(){
     const [city, setCity] = useState([])
     const [selectCountry, setSelectCountry] = useState()
     const [selectCity, setSelectCity] = useState()
-    const [name, setName] = useState()
-    const [email, setEmail] = useState()
-    const [telefone, setTelefone] = useState()
-    const [cpf, setCpf] = useState()
+    const [status, setStatus] = useState({type: '', mensagem: ''})
     const [form, setForm] = useState({
         name: '',
         email: '',
@@ -28,7 +25,7 @@ export default function FormBox(){
     
     const optionsCountry = country.map(i => ({
         'value': i.code,
-        'label': i.name
+        'label': i.name_ptbr
     }))
     const optionsCity = city.map(i => ({
         'value': i.id,
@@ -79,14 +76,37 @@ export default function FormBox(){
         arr[index] = item
         setCity(arr)
     }
-    const handleSubmit = (e) =>{
+    const handleSubmit = async(e) =>{
         e.preventDefault()
-        setForm({name, email, telefone, cpf, country: selectCountry, city: selectCity})
+        if(!(await validate())) return
         console.log(form)
         window.location.reload()
     }
+    const valueInput = e => setForm({...form, [e.target.name]: e.target.value})
 
-    
+    async function validate(){
+        let schema = yup.object().shape({
+            cpf: yup.string("Necessário preencher o campo cpf!")
+                .required("Necessário preencher o campo cpf!"),
+            telefone: yup.string("Necessário preencher o campo telefone!")
+                .required("Necessário preencher o campo telefone!"),
+            email: yup.string("Necessário preencher o campo email!")
+                .required("Necessário preencher o campo email!"),
+            name: yup.string("Necessário preencher o campo nome!")
+                .required("Necessário preencher o campo nome!"),
+            
+        });
+        try{
+            await schema.validate(form)
+            return true
+        }catch(err){
+            setStatus({
+                type: 'error',
+                mensagem: err.errors
+            });
+            return false
+        }
+    }
     return(
         <div className={styles.container}>
         <Form onSubmit={handleSubmit} className={styles.form}>
@@ -96,33 +116,33 @@ export default function FormBox(){
                         <Form.Label>Name</Form.Label>
                         <Form.Control 
                             type="text" 
-                            value={name}
+                            value={form.name}
                             name="name" 
-                            onChange={(e) => (setName(e.target.value))}/>
+                            onChange={valueInput}/>
                     </Form.Group>
                     <Form.Group className={styles.formGroup}>
                         <Form.Label>Email</Form.Label>
                         <Form.Control 
                             type="email"
-                            value={email} 
+                            value={form.email} 
                             name="email" 
-                            onChange={(e) => (setEmail(e.target.value))}/>
+                            onChange={valueInput}/>
                     </Form.Group>
                     <Form.Group className={styles.formGroup}>
                         <Form.Label>Telefone</Form.Label>
                         <Form.Control 
                             type="tel"
                             name="telefone" 
-                            value={telefone}
-                            onChange={(e) => (setTelefone(e.target.value))}/>
+                            value={form.telefone}
+                            onChange={valueInput}/>
                     </Form.Group>
                     <Form.Group className={styles.formGroup}>
                         <Form.Label>CPF</Form.Label>
                         <Form.Control 
                             type="text"
-                            value={cpf} 
+                            value={form.cpf} 
                             name="cpf" 
-                            onChange={(e) => (setCpf(e.target.value))}/>
+                            onChange={valueInput}/>
                     </Form.Group>
             </div>
 
@@ -132,20 +152,23 @@ export default function FormBox(){
                     <Select 
                         options={optionsCountry}
                         isMulti
+                        placeholder='Países'
                         className={styles.select}
                         onChange={handleSelectCountry}
                         />
                     <Select 
                         options={optionsCity}
                         isMulti
+                        placeholder='Cidades'
                         onChange={handleSelectCity}
                         className={styles.select}
                     />
                 </div>
+                <p>{status.mensagem}</p>
             </div>
 
-            <div className={styles.te}>
-                <button type="submit" className={styles.btn}>Primary</button>
+            <div className={styles.divButton}>
+                <button type="submit" className={styles.btn}>Enviar</button>
             </div>
         </Form>
     </div>
