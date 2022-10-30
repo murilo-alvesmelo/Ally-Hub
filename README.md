@@ -47,6 +47,9 @@ Inicie a aplicação
   $ npm start
 ```
 
+## Hospedagem
+
+https://ally-hub.vercel.app/
 
 ## Dependências utilizadas
 
