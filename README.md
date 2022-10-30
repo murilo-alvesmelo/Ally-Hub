@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Desafio Parte 2 - 𝘼𝙡𝙡𝙮 𝙃𝙪𝙗
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Objetivo
 
-## Available Scripts
+Criar uma interface web para marcar Destinos de Interesse.
 
-In the project directory, you can run:
+## Requisitos Obrigatórios
 
-### `npm start`
+- Interface deve ser feita em React.
+- O formulário deverá conter os seguintes campos
+    - Nome
+    - Email
+    - Telefone
+    - CPF
+    - País
+    - Cidade
+- Todos os campos devem ser obrigatórios
+- Os campos de País e Cidade devem permitir a seleção de múltiplas opções
+- Os países precisam ser buscados na API, seguindo as instruções abaixo.
+    - Fazer uma requisição GET para a rota: https://amazon-api.sellead.com/country para popular o select de países.
+- As cidades precisam ser buscadas na API, seguindo as instruções abaixo.
+    - Fazer uma requisição GET para a rota: https://amazon-api.sellead.com/city para popular o select de cidades.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Rodando localmente
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Clone o projeto
 
-### `npm test`
+```bash
+  $ git clone https://github.com/murilo-alvesmelo/Ally-Hub.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Entre no diretório do projeto
 
-### `npm run build`
+```bash
+  $ cd Ally-Hub
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Instale as dependências
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+  $ npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Inicie a aplicação
 
-### `npm run eject`
+```bash
+  $ npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Dependências utilizadas
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- react-bootstrap
+- react-select
+- yup
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
