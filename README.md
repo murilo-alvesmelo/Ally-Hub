@@ -35,9 +35,6 @@ Entre no diretório do projeto
   $ cd Ally-Hub
 ```
 
-## Hospedagem
-
-https://ally-hub.vercel.app/
 Instale as dependências
 
 ```bash
@@ -50,6 +47,9 @@ Inicie a aplicação
   $ npm start
 ```
 
+## Hospedagem
+
+https://ally-hub.vercel.app/
 
 ## Dependências utilizadas
 
