@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Form from 'react-bootstrap/Form'
+import { IMaskInput } from "react-imask";
 import Select from 'react-select';
 import * as yup from 'yup';
 
@@ -80,19 +81,18 @@ export default function FormBox(){
         e.preventDefault()
         if(!(await validate())) return
         console.log(form)
-        window.location.reload()
     }
     const valueInput = e => setForm({...form, [e.target.name]: e.target.value})
 
     async function validate(){
         let schema = yup.object().shape({
-            cpf: yup.string("Necessário preencher o campo cpf!")
+            cpf: yup.string()
                 .required("Necessário preencher o campo cpf!"),
-            telefone: yup.string("Necessário preencher o campo telefone!")
+            telefone: yup.string()
                 .required("Necessário preencher o campo telefone!"),
-            email: yup.string("Necessário preencher o campo email!")
+            email: yup.string()
                 .required("Necessário preencher o campo email!"),
-            name: yup.string("Necessário preencher o campo nome!")
+            name: yup.string()
                 .required("Necessário preencher o campo nome!"),
             
         });
@@ -131,6 +131,8 @@ export default function FormBox(){
                     <Form.Group className={styles.formGroup}>
                         <Form.Label>Telefone</Form.Label>
                         <Form.Control 
+                            as={IMaskInput}
+                            mask="+00 (00) 0 0000-0000"
                             type="tel"
                             name="telefone" 
                             value={form.telefone}
@@ -139,6 +141,8 @@ export default function FormBox(){
                     <Form.Group className={styles.formGroup}>
                         <Form.Label>CPF</Form.Label>
                         <Form.Control 
+                            as={IMaskInput}
+                            mask="000.000.000-00"
                             type="text"
                             value={form.cpf} 
                             name="cpf" 
